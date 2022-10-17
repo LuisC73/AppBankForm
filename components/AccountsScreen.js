@@ -56,7 +56,7 @@ function AccountsScreen({ route }) {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="Id ..."
+              placeholder="Identification ..."
             />
           )}
           name="id"
@@ -136,7 +136,10 @@ function AccountsScreen({ route }) {
           control={control}
           rules={{
             required: true,
-            pattern: /^[1000000-1000000000]+$/i,
+            maxLength: 10,
+            minLength: 7,
+            pattern:
+              /^(1[0-9][0-9][0-9][0-9][0-9][0-9][0-9]|20[0-9][0-9]|100000000)$/,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -158,6 +161,13 @@ function AccountsScreen({ route }) {
             Only numbers between 1 million and 100 million
           </Text>
         )}
+        {errors.balance?.type == "maxLength" && (
+          <Text style={{ color: "red" }}>Max 10 digits</Text>
+        )}
+        {errors.balance?.type == "minLength" && (
+          <Text style={{ color: "red" }}>Min 7 digits</Text>
+        )}
+
         <TouchableOpacity
           style={styles.button}
           onPress={handleSubmit(onSubmit)}

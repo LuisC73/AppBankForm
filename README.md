@@ -22,12 +22,12 @@
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/LuisC73/loopStudioLanding.git
+$ git clone https://github.com/LuisC73/AppBankForm.git
 
 #Run the project
 
 npm init
 
-npm start
+npx expo start --web
 
 ```
