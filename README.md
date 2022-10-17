@@ -10,7 +10,7 @@
 
 ## Overview
 
-![design](./assets/background.png)
+![design](./assets/design.jpg)
 
 ### Built With
 
