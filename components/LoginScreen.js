@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import users from "../helpers/users";
 
 function LoginScreen({ navigation }) {
   const {
@@ -30,12 +31,18 @@ function LoginScreen({ navigation }) {
       if (data.user === "admin" && data.password === "Admin1234@") {
         navigation.navigate("Accounts", { user: data.user });
       } else if (data.user != "admin") {
-        setError("Wrong user");
+        setError("Wrong admin");
       } else if (data.password != "Admin1234@") {
         setError("Wrong password");
       } else {
         setError("Incorrect data");
       }
+    } else if (role === "user") {
+      users.find((user) => {
+        user.user === data.user && user.password === data.password
+          ? navigation.navigate("Accounts", { user: data.user })
+          : setError("Incorrect data");
+      });
     } else {
       setError("This user is not registered");
     }

@@ -115,7 +115,7 @@ function AccountsScreen({ route }) {
             <Text style={{ color: "red" }}>Max 20 characters</Text>
           )}
           {errors.id?.type == "minLength" && (
-            <Text style={{ color: "red" }}>Min 5 characters</Text>
+            <Text style={{ color: "red" }}>Min 3 characters</Text>
           )}
 
           <Controller
@@ -166,7 +166,7 @@ function AccountsScreen({ route }) {
             control={control}
             rules={{
               required: true,
-              pattern: /^[0-9]+$/i,
+              pattern: /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/i
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
@@ -183,7 +183,7 @@ function AccountsScreen({ route }) {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
-                placeholder="Date ..."
+                placeholder="Date (dd/mm/yy)"
               />
             )}
             name="date"
@@ -199,10 +199,8 @@ function AccountsScreen({ route }) {
             control={control}
             rules={{
               required: true,
-              maxLength: 10,
-              minLength: 7,
               pattern:
-                /^(1[0-9][0-9][0-9][0-9][0-9][0-9]|20[0-9][0-9]|100000000)$/,
+                /^(1[0-9][0-9][0-9][0-9][0-9][0-9]|1[0-9][0-9][0-9][0-9][0-9][0-9][0-9]|100000000)$/,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
@@ -234,12 +232,6 @@ function AccountsScreen({ route }) {
             <Text style={{ color: "red" }}>
               Only numbers between 1 million and 100 million
             </Text>
-          )}
-          {errors.balance?.type == "maxLength" && (
-            <Text style={{ color: "red" }}>Max 10 digits</Text>
-          )}
-          {errors.balance?.type == "minLength" && (
-            <Text style={{ color: "red" }}>Min 7 digits</Text>
           )}
 
           <TouchableOpacity
