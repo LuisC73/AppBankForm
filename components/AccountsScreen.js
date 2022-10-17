@@ -166,7 +166,7 @@ function AccountsScreen({ route }) {
             control={control}
             rules={{
               required: true,
-              pattern: /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/i
+              pattern: /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/i,
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
@@ -243,7 +243,7 @@ function AccountsScreen({ route }) {
         </View>
       </View>
       <View style={{ display: complete ? "flex" : "none" }}>
-        <Text style={{ color: "green", fontWeight: 700, fontSize: 30 }}>
+        <Text style={{ color: "#EE4878", fontWeight: 700, fontSize: 30 }}>
           Good work!!
         </Text>
         {handleResult(data)}
