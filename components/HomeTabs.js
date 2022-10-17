@@ -17,7 +17,7 @@ function HomeTabs() {
         name="Login"
         component={LoginScreen}
         options={{
-          // tabBarStyle: { display: "none" },
+          tabBarStyle: { display: "none" },
           tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="person-add-outline"

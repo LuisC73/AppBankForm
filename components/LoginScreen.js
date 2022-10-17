@@ -7,7 +7,7 @@ import {
   Image,
   Picker,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 function LoginScreen({ navigation }) {
@@ -40,6 +40,12 @@ function LoginScreen({ navigation }) {
       setError("This user is not registered");
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  }, [error]);
 
   return (
     <View style={styles.container}>
