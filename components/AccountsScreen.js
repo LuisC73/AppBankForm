@@ -13,6 +13,7 @@ function AccountsScreen({ route }) {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -32,6 +33,7 @@ function AccountsScreen({ route }) {
   const onSubmit = (data) => {
     setComplete(!complete);
     setData(data);
+    reset();
   };
 
   const handleResult = (data) => {

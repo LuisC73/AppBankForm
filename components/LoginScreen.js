@@ -15,6 +15,7 @@ function LoginScreen({ navigation }) {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -46,6 +47,7 @@ function LoginScreen({ navigation }) {
     } else {
       setError("This user is not registered");
     }
+    reset();
   };
 
   useEffect(() => {
