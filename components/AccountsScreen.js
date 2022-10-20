@@ -80,7 +80,7 @@ function AccountsScreen({ route }) {
             control={control}
             rules={{
               required: true,
-              maxLength: 20,
+              maxLength: 12,
               minLength: 3,
               pattern: /^[0-9]+$/i,
             }}
@@ -114,7 +114,7 @@ function AccountsScreen({ route }) {
             <Text style={{ color: "red" }}>Only numbers</Text>
           )}
           {errors.id?.type == "maxLength" && (
-            <Text style={{ color: "red" }}>Max 20 characters</Text>
+            <Text style={{ color: "red" }}>Max 12 characters</Text>
           )}
           {errors.id?.type == "minLength" && (
             <Text style={{ color: "red" }}>Min 3 characters</Text>

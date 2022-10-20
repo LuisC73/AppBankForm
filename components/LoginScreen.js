@@ -31,8 +31,9 @@ function LoginScreen({ navigation }) {
     if (role === "admin") {
       if (data.user === "admin" && data.password === "Admin1234@") {
         navigation.navigate("Accounts", { user: data.user });
+        reset();
       } else if (data.user != "admin") {
-        setError("Wrong admin");
+        setError("Wrong user");
       } else if (data.password != "Admin1234@") {
         setError("Wrong password");
       } else {
@@ -40,14 +41,20 @@ function LoginScreen({ navigation }) {
       }
     } else if (role === "user") {
       users.find((user) => {
-        user.user === data.user && user.password === data.password
-          ? navigation.navigate("Accounts", { user: data.user })
-          : setError("Incorrect data");
+        if (user.user === data.user && user.password === data.password) {
+          navigation.navigate("Accounts", { user: data.user });
+          reset();
+        } else if (user.user != data.user) {
+          setError("Wrong user");
+        } else if (user.password != data.password) {
+          setError("Wrong password");
+        } else {
+          setError("Incorrect data");
+        }
       });
     } else {
       setError("This user is not registered");
     }
-    reset();
   };
 
   useEffect(() => {
